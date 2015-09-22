@@ -1,0 +1,81 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="ios-input-addon-behavior.html">
+
+<!--
+`<ios-input-error>` is an error message for use with `<ios-input-container>`. The error is
+displayed when the `<ios-input-container>` is `invalid`.
+
+    <ios-input-container>
+      <input is="iron-input" pattern="[0-9]*">
+      <ios-input-error>Only numbers are allowed!</ios-input-error>
+    </ios-input-container>
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--ios-input-container-invalid-color` | The foreground color of the error | `#db4437`
+`--ios-input-error`                   | Mixin applied to the error        | `{}`
+-->
+<dom-module id="ios-input-error">
+  <template>
+
+    <style>
+      :host {
+        color: var(--ios-input-container-invalid-color, #db4437);
+        display: inline-block;
+        float: left;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.011em;
+        line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        visibility: hidden;
+        white-space: nowrap;
+
+        @apply(--ios-input-error);
+      }
+
+      :host([invalid]) {
+        visibility: visible;
+      };
+    </style>
+
+    <content></content>
+
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'ios-input-error',
+
+    behaviors: [
+      Polymer.IosInputAddonBehavior
+    ],
+
+    properties: {
+      /**
+       * True if the error is showing.
+       */
+      invalid: {
+        readOnly: true,
+        reflectToAttribute: true,
+        type: Boolean
+      }
+    },
+
+    update: function(state) {
+      this._setInvalid(state.invalid);
+    }
+  });
+</script>

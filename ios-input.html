@@ -5,13 +5,113 @@ This code may only be used under the MIT license.
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+<link rel="import" href="ios-input-behavior.html">
+<link rel="import" href="ios-input-container.html">
+<link rel="import" href="ios-input-error.html">
+
+<!--
+`<ios-input>` is a single-line text field with Material Design styling.
+
+    <ios-input label="Input label"></ios-input>
+
+It may include an optional error message or character counter.
+
+    <ios-input error-message="Invalid input!" label="Input label"></ios-input>
+    <ios-input char-counter label="Input label"></ios-input>
+
+See `Polymer.IosInputBehavior` for more API docs.
+
+### Styling
+
+See `Polymer.IosInputContainer` for a list of custom properties used to
+style this element.
+
+@group iOS Elements
+@element ios-input
+@demo demo/index.html
+-->
 
 <dom-module id="ios-input">
-  <template></template>
+  <template>
 
-  <script>
-    Polymer({
-      is: 'ios-input'
-    });
-  </script>
+    <style>
+      :host {
+        display: block;
+      }
+
+      input::-webkit-input-placeholder {
+        color: var(--ios-input-container-color, --secondary-text-color);
+      }
+
+      input:-moz-placeholder {
+        color: var(--ios-input-container-color, --secondary-text-color);
+      }
+
+      input::-moz-placeholder {
+        color: var(--ios-input-container-color, --secondary-text-color);
+      }
+
+      input:-ms-input-placeholder {
+        color: var(--ios-input-container-color, --secondary-text-color);
+      }
+    </style>
+
+    <ios-input-container auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
+
+      <label hidden$="[[!label]]">[[label]]</label>
+
+      <input is="iron-input" id="input"
+        aria-labelledby$="[[_ariaLabelledBy]]"
+        aria-describedby$="[[_ariaDescribedBy]]"
+        disabled$="[[disabled]]"
+        bind-value="{{value}}"
+        invalid="{{invalid}}"
+        prevent-invalid-input="[[preventInvalidInput]]"
+        allowed-pattern="[[allowedPattern]]"
+        validator="[[validator]]"
+        type$="[[type]]"
+        pattern$="[[pattern]]"
+        required$="[[required]]"
+        autocomplete$="[[autocomplete]]"
+        autofocus$="[[autofocus]]"
+        inputmode$="[[inputmode]]"
+        minlength$="[[minlength]]"
+        maxlength$="[[maxlength]]"
+        min$="[[min]]"
+        max$="[[max]]"
+        step$="[[step]]"
+        name$="[[name]]"
+        placeholder$="[[placeholder]]"
+        readonly$="[[readonly]]"
+        list$="[[list]]"
+        size$="[[size]]"
+        autocapitalize$="[[autocapitalize]]"
+        autocorrect$="[[autocorrect]]"
+        on-change="_onChange">
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <ios-input-error>[[errorMessage]]</ios-input-error>
+      </template>
+
+      <template is="dom-if" if="[[charCounter]]">
+        <ios-input-char-counter></ios-input-char-counter>
+      </template>
+
+    </ios-input-container>
+
+  </template>
 </dom-module>
+
+<script>
+  Polymer({
+    is: 'ios-input',
+
+    behaviors: [
+      Polymer.IronFormElementBehavior,
+      Polymer.IosInputBehavior,
+      Polymer.IronControlState
+    ]
+  });
+</script>
