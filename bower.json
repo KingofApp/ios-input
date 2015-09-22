@@ -1,0 +1,30 @@
+{
+  "name": "ios-input",
+  "version": "0.0.1",
+  "description": "iOS design text fields",
+  "authors": [
+    "Abdón Rodríguez Davila <thepeer@kingofapp.es>"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "ios",
+    "input"
+  ],
+  "main": [
+    "ios-input.html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KingofApp/ios-input.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0",
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  }
+}
