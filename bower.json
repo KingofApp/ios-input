@@ -13,7 +13,11 @@
     "input"
   ],
   "main": [
-    "ios-input.html"
+    "ios-input.html",
+    "ios-textarea.html",
+    "ios-input-behavior.html",
+    "ios-input-container.html",
+    "ios-input-error.html"
   ],
   "repository": {
     "type": "git",
@@ -22,6 +26,12 @@
   "license": "MIT",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.1.0",
+    "ios-styles": "KingofApp/ios-styles#^0.2.0",
+    "iron-autogrow-textarea": "PolymerElements/iron-autogrow-textarea#^1.0.0",
+    "iron-behaviors": "PolymerElements/iron-behaviors#^1.0.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0",
+    "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#^1.0.0",
+    "iron-input": "PolymerElements/iron-input#^1.0.0"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",

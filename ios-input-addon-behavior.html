@@ -1,0 +1,43 @@
+<!--
+@license
+Copyright (c) 2015 Team King of App. All rights reserved.
+This code may only be used under the MIT license.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+
+  /**
+   * Use `Polymer.IosInputAddonBehavior` to implement an add-on for `<ios-input-container>`. A
+   * add-on appears below the input, and may display information based on the input value and
+   * validity such as a character counter or an error message.
+   * @polymerBehavior
+   */
+  Polymer.IosInputAddonBehavior = {
+
+    hostAttributes: {
+      'add-on': ''
+    },
+
+    attached: function() {
+      this.fire('addon-attached');
+    },
+
+    /**
+     * The function called by `<ios-input-container>` when the input value or validity changes.
+     * @param {{
+     *   inputElement: (Node|undefined),
+     *   value: (string|undefined),
+     *   invalid: (boolean|undefined)
+     * }} state All properties are optional -
+     *     inputElement: The input element.
+     *     value: The input value.
+     *     invalid: True if the input value is invalid.
+     */
+    update: function(state) {
+    }
+
+  };
+
+</script>
